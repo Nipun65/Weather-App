@@ -1,0 +1,66 @@
+.card {
+  border-radius: 0.6rem;
+  background-color: rgb(138, 138, 180);
+  width: 30%;
+  box-shadow: #171717 1rem;
+  padding: 1rem 2rem;
+  max-width: 22rem;
+  min-width: 16rem;
+  color: #fcfefd;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.card-heading {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.sub-heading {
+  font-size: 1.6rem;
+  text-align: left;
+  margin: 1rem 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  align-items: center;
+}
+
+.icon {
+  height: 80px;
+  width: 80px;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  text-align: left;
+}
+
+.description {
+  font-size: 1.3rem;
+  margin-top: -1.3rem;
+  margin-left: 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+@media (width<=768px) {
+  .card-heading {
+    font-size: 1.7rem;
+  }
+}

@@ -1,0 +1,76 @@
+body {
+  background: #2146c7;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.option-wrapper {
+  position: absolute;
+  z-index: 10;
+  top: 1.3rem;
+  left: 0;
+  border-radius: 0.3rem;
+  width: 100%;
+  padding: 0;
+  max-height: 18rem;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.option {
+  display: flex;
+  gap: 0.3rem;
+  padding: 1rem;
+  background-color: aliceblue;
+  width: 100%;
+  cursor: pointer;
+  border: 0px solid #171717;
+}
+
+.wrapper {
+  display: flex;
+  gap: 0rem;
+  width: 40%;
+}
+
+.submit-btn {
+  background-color: #e6cba8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 10%;
+  font-weight: 400;
+  font-size: 0.85rem;
+  border-top-left-radius: 0rem !important;
+  border-bottom-left-radius: 0rem !important;
+  border: 0px;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.option:hover {
+  background-color: rgb(141, 183, 220);
+  color: white;
+}
+
+@media (width<=768px) {
+  .option-wrapper {
+    overflow: visible;
+  }
+}
