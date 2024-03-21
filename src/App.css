@@ -86,12 +86,20 @@ body {
   margin-top: 5rem;
 }
 
+.search {
+  font-size: 1.8rem;
+  font-family: 'Madimi One', sans-serif;
+}
+
 @media (width<=768px) {
   .submit-btn {
     width: 30%;
   }
   .option-wrapper {
     width: 69.5%;
+  }
+  .search {
+    font-size: 1.3rem;
   }
 }
 

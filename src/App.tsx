@@ -26,8 +26,10 @@ function App() {
 
       {loading.cardLoader ? (
         <Loader className={'loader'} />
+      ) : weather ? (
+        <Card data={weather} selectedOption={selectedOption}></Card>
       ) : (
-        weather && <Card data={weather} selectedOption={selectedOption}></Card>
+        <p className="search">Search City for Weather Updates</p>
       )}
     </div>
   )
