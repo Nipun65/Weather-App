@@ -25,7 +25,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
 
   const handleChange = (e: React.ChangeEvent) => {
     setValue((e.target as HTMLInputElement).value)
-    setCities(null)
+    if (cities && cities?.length > 0) setCities(null)
     if (error.hasError) {
       setError({ hasError: false, message: '' })
     }
@@ -34,11 +34,19 @@ const InputGroup: React.FC<InputGroupProps> = ({
   const handleButton = async () => {
     if (value) {
       setLoading({ submitLoader: true, cardLoader: false })
-      const cities = await fetchCities(value)
-      if (cities.length === 0) {
-        setError({ hasError: true, message: 'No City Found' })
+      setError({ hasError: false, message: '' })
+      try {
+        const data = await fetchCities(value)
+
+        if (data?.data?.length === 0) {
+          setError({ hasError: true, message: 'No City Found' })
+        } else {
+          setCities(data?.data)
+        }
+      } catch (err: any) {
+        console.error(err)
+        setError({ hasError: true, message: err?.response?.data?.message })
       }
-      setCities(cities)
       setLoading({ submitLoader: false, cardLoader: false })
     } else {
       setError({ hasError: true, message: 'This is required' })
@@ -53,10 +61,17 @@ const InputGroup: React.FC<InputGroupProps> = ({
       lon: city.lon,
     }
     setCities([])
-    const data = await fetchCityWeather(params)
-    const updatedWeather = helpers.updateWeatherData(data, city)
-    localStorage.setItem('weather', JSON.stringify(updatedWeather))
-    setWeather(updatedWeather)
+    try {
+      const data = await fetchCityWeather(params)
+      if (data.status === 200) {
+        const updatedWeather = helpers.updateWeatherData(data.data, city)
+        localStorage.setItem('weather', JSON.stringify(updatedWeather))
+        setWeather(updatedWeather)
+      }
+    } catch (err: any) {
+      console.error(err)
+      setError({ hasError: true, message: err?.response?.data?.message })
+    }
     setLoading({ submitLoader: false, cardLoader: false })
   }
 
@@ -88,7 +103,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
 
         {cities && cities?.length > 0 && (
           <ul className="option-wrapper">
-            {cities.map((city: Location) => (
+            {cities.map((city: Location, index: number) => (
               <li
                 className="option"
                 tabIndex={0}
@@ -98,7 +113,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
                   }
                 }}
                 onClick={() => handleSelection(city)}
-                key={city.lat}
+                key={`${city.name}-${city.lat}-${index}`}
               >
                 <img
                   src={`https://flagcdn.com/h80/${city?.country.toLowerCase()}.png`}

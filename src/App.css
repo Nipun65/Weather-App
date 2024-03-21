@@ -82,6 +82,10 @@ body {
   background-color: rgb(156, 141, 232);
 }
 
+.loader {
+  margin-top: 5rem;
+}
+
 @media (width<=768px) {
   .submit-btn {
     width: 30%;

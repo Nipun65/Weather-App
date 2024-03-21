@@ -25,7 +25,7 @@ function App() {
       />
 
       {loading.cardLoader ? (
-        <Loader />
+        <Loader className={'loader'} />
       ) : (
         weather && <Card data={weather} selectedOption={selectedOption}></Card>
       )}

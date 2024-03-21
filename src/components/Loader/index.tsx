@@ -1,12 +1,10 @@
 import styles from './index.module.css'
 
 interface LoaderProps {
-  type?: string
+  className: string
 }
-const Loader: React.FC<LoaderProps> = ({ type }) => {
-  return (
-    <span className={type === 'spinner' ? styles.spinner : styles.loader} />
-  )
+const Loader: React.FC<LoaderProps> = ({ className }) => {
+  return <span className={`${styles.loader} ${className}`} />
 }
 
 export default Loader

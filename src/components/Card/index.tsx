@@ -37,7 +37,11 @@ const Card: React.FC<CardProps> = ({ data }) => {
           </p>
           <p className={styles.description}>
             Feels like&nbsp;
-            {<span className={styles.font}>{data?.feels_like}</span>}
+            {
+              <span className={`${styles.font} ${styles.opacity}`}>
+                {data?.feels_like}
+              </span>
+            }
           </p>
         </div>
       </div>
@@ -46,7 +50,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
           return (
             <div className={styles['footer-content']} key={value}>
               <p>{helpers.convertToPascalCase(value)}</p>
-              <p className={styles.font}>
+              <p className={`${styles.font} ${styles.opacity}`}>
                 {data?.main[value as keyof MainInfo]}
               </p>
             </div>
