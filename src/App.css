@@ -31,11 +31,11 @@ body {
   z-index: 10;
   top: 2.4rem;
   border-radius: 0 0 0.4rem 0.4rem;
-  width: 79.8%;
+  width: 79.7%;
   min-width: 12rem;
   padding: 0;
   overflow-x: hidden;
-  animation: increase 100ms ease-in-out;
+  animation: expand 100ms ease-in-out;
 }
 
 .option {
@@ -87,11 +87,11 @@ body {
     width: 30%;
   }
   .option-wrapper {
-    width: 70%;
+    width: 69.5%;
   }
 }
 
-@keyframes increase {
+@keyframes expand {
   0% {
     opacity: 0.2;
   }

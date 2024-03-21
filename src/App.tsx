@@ -1,10 +1,9 @@
 import { useState } from 'react'
-
-import Card from './components/Card'
-import Loader from './components/Loader'
-import InputGroup from './components/InputGroup'
+import { CardData, Location } from '@interfaces'
+import Card from '@components/Card'
+import Loader from '@components/Loader'
+import InputGroup from '@components/InputGroup'
 import './App.css'
-import { CardData } from './interface'
 
 function App() {
   const [weather, setWeather] = useState<CardData>(
@@ -14,6 +13,7 @@ function App() {
     submitLoader: false,
     cardLoader: false,
   })
+  const [selectedOption, setSelectedOption] = useState<Location | null>(null)
 
   return (
     <div className="main">
@@ -21,12 +21,13 @@ function App() {
         setLoading={setLoading}
         setWeather={setWeather}
         loading={loading}
+        setSelectedOption={setSelectedOption}
       />
 
       {loading.cardLoader ? (
         <Loader />
       ) : (
-        weather && <Card data={weather}></Card>
+        weather && <Card data={weather} selectedOption={selectedOption}></Card>
       )}
     </div>
   )

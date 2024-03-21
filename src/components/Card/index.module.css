@@ -1,9 +1,9 @@
 .card {
   position: relative;
-  width: 30%;
+  width: 40%;
   color: #111822;
   padding: 1rem 2rem;
-  max-width: 22rem;
+  max-width: 24rem;
   min-width: 18rem;
   border-radius: 0.6rem;
   background: rgba(255, 255, 255);

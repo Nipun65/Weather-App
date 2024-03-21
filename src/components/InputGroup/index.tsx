@@ -1,21 +1,23 @@
 import { Dispatch, SetStateAction, useState } from 'react'
-import { fetchCities, fetchCityWeather } from '../../services/api'
-import { CardData, LoaderType, Location } from '../../interface'
-import { helpers } from '../../utils'
-import Button from '../Button'
-import Input from '../Input'
-import loader from '../../assets/loader.svg'
+import { fetchCities, fetchCityWeather } from '@services/api'
+import { CardData, LoaderType, Location } from '@interfaces'
+import { helpers } from '@utils'
+import Button from '@components/Button'
+import Input from '@components/Input'
+import loader from '@assets/loader.svg'
 import styles from './index.module.css'
 
 interface InputGroupProps {
   setLoading: Dispatch<SetStateAction<LoaderType>>
   loading: LoaderType
   setWeather: Dispatch<SetStateAction<CardData>>
+  setSelectedOption: Dispatch<SetStateAction<Location | null>>
 }
 const InputGroup: React.FC<InputGroupProps> = ({
   loading,
   setLoading,
   setWeather,
+  setSelectedOption,
 }) => {
   const [value, setValue] = useState('')
   const [cities, setCities] = useState<Location[] | null>(null)
@@ -45,14 +47,14 @@ const InputGroup: React.FC<InputGroupProps> = ({
 
   const handleSelection = async (city: Location) => {
     setLoading({ submitLoader: false, cardLoader: true })
-
+    setSelectedOption(city)
     const params = {
       lat: city.lat,
       lon: city.lon,
     }
     setCities([])
     const data = await fetchCityWeather(params)
-    const updatedWeather = helpers.updateWeatherData(data)
+    const updatedWeather = helpers.updateWeatherData(data, city)
     localStorage.setItem('weather', JSON.stringify(updatedWeather))
     setWeather(updatedWeather)
     setLoading({ submitLoader: false, cardLoader: false })
@@ -67,8 +69,6 @@ const InputGroup: React.FC<InputGroupProps> = ({
           placeholder="Enter City Name"
           className={styles.input}
           style={{
-            borderBottomRightRadius:
-              cities && cities?.length > 0 ? '0' : '0.4rem',
             borderBottomLeftRadius:
               cities && cities?.length > 0 ? '0' : '0.4rem',
           }}

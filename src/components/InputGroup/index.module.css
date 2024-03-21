@@ -33,8 +33,8 @@
 }
 
 .loader {
-  height: 17px;
-  width: 17px;
+  height: 16px;
+  width: 16px;
 }
 
 .flag {
@@ -46,7 +46,7 @@
   text-align: left;
   color: #f44336;
   position: absolute;
-  top: 2.3rem;
+  top: 3.1rem;
   left: 0;
   margin-left: 0.2rem;
 }

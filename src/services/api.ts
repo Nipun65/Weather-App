@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Coord } from '../interface'
+import { Coord } from '@interfaces'
 
 const API_URL = import.meta.env.VITE_OPENWEATHER_API_URL
 const API_KEY = import.meta.env.VITE_API_KEY

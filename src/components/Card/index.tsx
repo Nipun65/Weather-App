@@ -1,9 +1,10 @@
-import { CardData, MainInfo } from '../../interface'
-import { helpers } from '../../utils'
+import { helpers } from '@utils'
+import { CardData, Location, MainInfo } from '@interfaces'
 import styles from './index.module.css'
 
 interface CardProps {
   data: CardData
+  selectedOption: Location | null
 }
 
 const Card: React.FC<CardProps> = ({ data }) => {
@@ -15,7 +16,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
           srcSet={`https://flagcdn.com/h40/${data?.country?.toLowerCase()}.png 2x`}
           alt={data?.country}
         />
-        {data?.city}, {data?.country}
+        {data?.city}, {data?.state}, {data?.country}
       </p>
       <div className={styles['sub-heading']}>
         <div className={styles.temp_wrapper}>

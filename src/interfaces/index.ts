@@ -61,6 +61,7 @@ interface WeatherData {
 
 interface CardData {
   coord: Coord
+  state: string
   country: string
   city: string
   weather: Weather[]
