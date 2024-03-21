@@ -4,7 +4,7 @@ import { Coord } from '@interfaces'
 const API_KEY = import.meta.env.VITE_API_KEY
 
 const fetchCities = async (value: string) => {
-  const API_URL = 'http://api.openweathermap.org/geo/1.0/direct'
+  const API_URL = 'https://api.openweathermap.org/geo/1.0/direct'
   try {
     const cities = await axios.get(API_URL, {
       params: {
