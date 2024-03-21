@@ -5,6 +5,7 @@ interface InputProps {
   className?: string
   type?: string
   placeholder?: string
+  style?: React.CSSProperties
   onChange?: (e: React.ChangeEvent) => void
 }
 
@@ -14,6 +15,7 @@ const Input: React.FC<InputProps> = ({
   type,
   placeholder,
   onChange,
+  style,
 }) => {
   return (
     <input
@@ -22,6 +24,7 @@ const Input: React.FC<InputProps> = ({
       type={type || 'text'}
       placeholder={placeholder}
       onChange={onChange}
+      style={style}
     />
   )
 }

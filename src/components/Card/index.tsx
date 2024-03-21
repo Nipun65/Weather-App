@@ -1,9 +1,11 @@
+import { CardData, MainInfo } from '../../interface'
 import { helpers } from '../../utils'
 import styles from './index.module.css'
 
 interface CardProps {
-  data: any
+  data: CardData
 }
+
 const Card: React.FC<CardProps> = ({ data }) => {
   return (
     <div className={styles.card}>
@@ -16,28 +18,36 @@ const Card: React.FC<CardProps> = ({ data }) => {
         {data?.city}, {data?.country}
       </p>
       <div className={styles['sub-heading']}>
-        <span style={{ display: 'flex', alignItems: 'center' }}>
+        <div className={styles.temp_wrapper}>
           <img
             src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}@2x.png`}
             alt="weather icon"
             className={styles.icon}
           />
 
-          <p>
+          <p className={styles.font}>
             {data?.temp}
             &deg;F
           </p>
-        </span>
-        <p className={styles.description}>
-          {helpers.underscoreToPascalCase(data?.weather[0]?.description)}
-        </p>
+        </div>
+        <div>
+          <p className={styles.description}>
+            {helpers.convertToPascalCase(data?.weather[0]?.description)}
+          </p>
+          <p className={styles.description}>
+            Feels like&nbsp;
+            {<span className={styles.font}>{data?.feels_like}</span>}
+          </p>
+        </div>
       </div>
       <div className={styles.footer}>
         {Object.keys(data?.main).map((value: string) => {
           return (
             <div className={styles['footer-content']} key={value}>
-              <p>{helpers.underscoreToPascalCase(value)}</p>
-              <p>{data?.main[value]}</p>
+              <p>{helpers.convertToPascalCase(value)}</p>
+              <p className={styles.font}>
+                {data?.main[value as keyof MainInfo]}
+              </p>
             </div>
           )
         })}
