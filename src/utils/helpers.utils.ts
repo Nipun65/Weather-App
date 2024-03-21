@@ -5,7 +5,7 @@ const updateWeatherData = (data: WeatherData, selectedOption: Location) => {
     coord: data?.coord,
     country: data?.sys?.country,
     city: data?.name,
-    state: selectedOption?.state,
+    state: selectedOption?.state || '',
     weather: data?.weather,
     temp: data.main.temp as number,
     feels_like: `${data?.main?.feels_like}°`,

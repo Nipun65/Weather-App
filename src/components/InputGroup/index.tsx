@@ -37,11 +37,12 @@ const InputGroup: React.FC<InputGroupProps> = ({
       setError({ hasError: false, message: '' })
       try {
         const data = await fetchCities(value)
-
-        if (data?.data?.length === 0) {
-          setError({ hasError: true, message: 'No City Found' })
-        } else {
-          setCities(data?.data)
+        if (data.status === 200) {
+          if (data?.data?.length === 0) {
+            setError({ hasError: true, message: 'No City Found' })
+          } else {
+            setCities(data?.data)
+          }
         }
       } catch (err: any) {
         console.error(err)

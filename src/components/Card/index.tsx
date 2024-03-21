@@ -16,7 +16,9 @@ const Card: React.FC<CardProps> = ({ data }) => {
           srcSet={`https://flagcdn.com/h40/${data?.country?.toLowerCase()}.png 2x`}
           alt={data?.country}
         />
-        {data?.city}, {data?.state}, {data?.country}
+        {data?.city}
+        {data?.state?.length > 0 ? <>, {data?.state}</> : ''}
+        {data?.country?.length > 0 ? <>, {data?.country}</> : ''}
       </p>
       <div className={styles['sub-heading']}>
         <div className={styles.temp_wrapper}>
