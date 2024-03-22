@@ -65,7 +65,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
     try {
       const data = await fetchCityWeather(params)
       if (data.status === 200) {
-        const updatedWeather = helpers.updateWeatherData(data.data, city)
+        const updatedWeather = helpers.updateWeatherData(data.data, city?.state)
         localStorage.setItem('weather', JSON.stringify(updatedWeather))
         setWeather(updatedWeather)
       }

@@ -44,6 +44,9 @@ p {
 
 .font {
   font-family: 'Madimi One', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .card-heading {
@@ -60,7 +63,6 @@ p {
   margin: 1rem 2rem 0 -1.2rem;
   display: flex;
   flex-direction: row;
-  gap: 0rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -86,7 +88,7 @@ p {
   font-size: 0.9rem;
 }
 
-.temp_wrapper {
+.temp-wrapper {
   display: flex;
   align-items: center;
 }

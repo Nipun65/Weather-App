@@ -1,11 +1,11 @@
-import { CardData, Location, WeatherData } from '@interfaces'
+import { CardData, WeatherData } from '@interfaces'
 
-const updateWeatherData = (data: WeatherData, selectedOption: Location) => {
+const updateWeatherData = (data: WeatherData, state: string) => {
   const newData: CardData = {
     coord: data?.coord,
     country: data?.sys?.country,
     city: data?.name,
-    state: selectedOption?.state || '',
+    state: state || '',
     weather: data?.weather,
     temp: data.main.temp as number,
     feels_like: `${data?.main?.feels_like}°`,

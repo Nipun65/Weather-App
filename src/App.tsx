@@ -27,7 +27,11 @@ function App() {
       {loading.cardLoader ? (
         <Loader className={'loader'} />
       ) : weather ? (
-        <Card data={weather} selectedOption={selectedOption}></Card>
+        <Card
+          data={weather}
+          setWeather={setWeather}
+          selectedOption={selectedOption}
+        />
       ) : (
         <p className="search">Search City for Weather Updates</p>
       )}
