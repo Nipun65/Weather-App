@@ -2,11 +2,12 @@ import axios from 'axios'
 import { Coord } from '@interfaces'
 
 const API_KEY = import.meta.env.VITE_API_KEY
+const API_URL = import.meta.env.VITE_API_URL
 
 const fetchCities = async (value: string) => {
-  const API_URL = 'https://api.openweathermap.org/geo/1.0/direct'
+  const url = `${API_URL}/geo/1.0/direct`
   try {
-    const cities = await axios.get(API_URL, {
+    const cities = await axios.get(url, {
       params: {
         q: value,
         limit: 5,
@@ -21,9 +22,8 @@ const fetchCities = async (value: string) => {
 
 const fetchCityWeather = async (params: Coord) => {
   try {
-    const WEATHER_DATA_URl = 'https://api.openweathermap.org/data/2.5/weather'
-
-    const data = await axios.get(WEATHER_DATA_URl, {
+    const url = `${API_URL}/data/2.5/weather`
+    const data = await axios.get(url, {
       params: { ...params, appid: API_KEY, units: 'Imperial' },
     })
     return data
